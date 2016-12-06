@@ -18,7 +18,7 @@ class Death
     total
   end
 
-  def accumulated_death_by_dieases
+  def accumulated_death_by_diseases
     hash = {}
 
     death_hash.each do |death|
@@ -28,6 +28,8 @@ class Death
         hash[death["leading_cause"]] = death["deaths"].to_i
       end
     end
+
+    hash = hash.sort_by{|k, v| v}.reverse.to_h
 
     hash.each do |disease, amount|
       if amount != 0

@@ -10,14 +10,16 @@ class DeathCausesCLI
 
     while input != "exit"
       if is_year?(input)
-        puts "#{deaths.accumulate_deaths} deaths in #{input}"
-        deaths.accumulated_death_by_dieases
-      else
+        puts "\n#{deaths.accumulate_deaths} \tDeaths : ALL\n------------------------------------"
+        deaths.accumulated_death_by_diseases
+      elsif input == "help"
+        help
+      else 
         puts "You didn't enter a valid input."
         puts "Please enter a year between 2007 and 2014."
       end
 
-      puts "Type a year between 2007 - 2014, to display total deaths of that year."
+      puts "Type another year between 2007 - 2014."
       input = gets.chomp.strip
       deaths = input_to_death_year(input)
     end
