@@ -13,10 +13,9 @@ class Death
     death_hash.each do |death|
       if death["year"] == year && death["deaths"] != "."
         total += death["deaths"].to_i
-        binding.pry
       end
     end
-
+      binding.pry
     total
   end
 
