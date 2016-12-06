@@ -5,8 +5,8 @@ class DeathCausesCLI
     puts "Type a year between 2007 - 2014, to display total deaths of that year."
     help
 
-    input = get_user_input
-    deaths = Death.new(input)
+    input = gets.chomp.strip
+    deaths = input_to_death_year(input)
 
     while input != "exit"
       if is_year?(input)
@@ -17,12 +17,16 @@ class DeathCausesCLI
         puts "Please enter a year between 2007 and 2014."
       end
 
-      input = get_user_input
+      puts "Type a year between 2007 - 2014, to display total deaths of that year."
+      input = gets.chomp.strip
+      deaths = input_to_death_year(input)
     end
   end
 
-  def get_user_input
-    gets.chomp.strip
+  def input_to_death_year(input)
+    d = Death.new
+    d.year = input
+    d
   end
 
   def is_year?(input)

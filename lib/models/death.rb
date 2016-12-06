@@ -1,9 +1,7 @@
 class Death
-  attr_accessor :death_hash
-  attr_reader :year
+  attr_accessor :death_hash, :year
 
-  def initialize(year)
-    @year = year
+  def initialize
     @death_hash = NYCDeathApi.new.death_data
   end
 
@@ -13,9 +11,10 @@ class Death
     death_hash.each do |death|
       if death["year"] == year && death["deaths"] != "."
         total += death["deaths"].to_i
+      else
       end
     end
-      binding.pry
+
     total
   end
 
